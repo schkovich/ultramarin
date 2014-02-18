@@ -1,0 +1,107 @@
+﻿ULTRAMARIN 
+
+Fonts:
+Headmenu 
+background color : #666666
+hight :34px
+
+font style :HelveticaNeue Light, Verdana, sans serif
+font color : #fefefe
+font size :9px (pt)
+font style :crisp
+onmouse, active link
+font color:#333333
+background color:#fefefe
+
+Left menu Galeries:
+
+font style :HelveticaNeue Light, Verdana, sans serif
+font color : #fefefe
+font size :11px (pt)
+font style :crisp
+onmouse over, active
+font color: #b5b5b5
+
+Left menu other pages:
+
+font style :HelveticaNeue Light, Verdana, sans serif
+font color : #333333
+font size :11px (pt)
+font style :crisp
+onmouse over, active
+font color: #b5b5b5
+
+
+Text:  
+font style :HelveticaNeue Light, Verdana, sans serif
+font color : #333333
+font size :11px (pt)
+
+DIclamer text:9px
+copy right text:9px
+font style :HelveticaNeue Regular, Verdana, sans serif
+
+
+
+Body 
+Bgcolor # 666666
+
+
+Bg
+bg color #fefefe                  (bela)
+bgcolor #666666               (svetlo siva)
+bgcolor #333333               (tamno siva)
+
+
+Logo field
+hight:78px
+background color: #fefefe
+
+Foto 
+(max) width 773 px 
+(max) height 433px
+
+Thumbnails
+width 42px
+height 42px
+space between 1px
+
+
+
+ftp
+
+Wordpress
+
+username: admin
+pasword: FmTWmyP7yVbA
+
+……………………………………………………………
+U okviru hosting ponude BeotelNeta, najviseg kvaliteta, omoguceni su Vam sledeci servisi:
+
+ - ftp
+ - mail
+ - http
+ - MySQL
+ - administracija preko ControlPanel web interfejsa
+
+FTP
+ username: ultramar
+ password: FmTWmyP7yVbA
+ ftp host: ultramarin.rs
+ direktorijum: /public_html
+
+
+HTTP
+ http://www.ultramarin.rs
+ http://ultramarin.rs
+
+
+MySQL baza (Kreira se iz control panela)
+
+web ControlPanel
+ Glavna strana za administriranje domena je
+ http://ultramarin.rs:2082/
+
+
+
+
