@@ -1,3 +1,6 @@
+.idea/
+.vagrant/
+atlassian-ide-plugin.xml
 .htaccess
 wp-config.php
 wp-content/uploads/
