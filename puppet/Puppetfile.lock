@@ -5,6 +5,13 @@ FORGE
       puppetlabs/concat (>= 1.0.0)
       puppetlabs/mysql (>= 2.1.0)
       puppetlabs/stdlib (>= 2.3.1)
+    jfryman/nginx (0.0.7)
+      puppetlabs/apt (>= 1.0.0)
+      puppetlabs/concat (>= 1.0.0)
+      puppetlabs/stdlib (>= 0.1.6)
+    nodes/php (0.8.0)
+      puppetlabs/apt (> 0.0.0)
+      puppetlabs/stdlib (> 0.0.0)
     puppetlabs/apt (1.4.1)
       puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/concat (1.1.0-rc1)
@@ -14,16 +21,15 @@ FORGE
     puppetlabs/stdlib (4.1.0)
 
 GIT
-  remote: github.com:jfryman/puppet-nginx.git
+  remote: github.com:schkovich/webserver.git
   ref: master
-  sha: 7cf6dac978fe08e061ed9201284c7a5bf22af2a3
+  sha: 11afe1c0e3e85823ddda0b044c1dbc8b04b07cd4
   specs:
-    nginx (0.0.7)
-      puppetlabs/apt (>= 1.0.0)
-      puppetlabs/concat (>= 1.0.0)
-      puppetlabs/stdlib (>= 0.1.6)
+    web_server (0.1.1)
+      jfryman/nginx (>= 0.0.7)
+      nodes/php (>= 0.8.0)
 
 DEPENDENCIES
   hunner/wordpress (>= 0)
-  nginx (>= 0)
+  web_server (>= 0)
 

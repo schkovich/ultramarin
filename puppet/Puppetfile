@@ -1,0 +1,6 @@
+forge "http://forge.puppetlabs.com"
+
+mod 'web_server',
+  :git => 'github.com:schkovich/webserver.git'
+
+mod 'hunner/wordpress'

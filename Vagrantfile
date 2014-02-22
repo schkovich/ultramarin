@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
   # argument is a set of non-required options.
   # NFS shares (Ubuntu) are not working well on encrypted file systems
   # https://help.ubuntu.com/community/SettingUpNFSHowTo#Mounting_NFS_shares_in_encrypted_home_won.27t_work_on_boot
-  config.vm.synced_folder "~/Projects/UltraMarinWp/", "/project", :nfs => true
+  config.vm.synced_folder "~/Projects/tcpproxy/", "/project", :nfs => true
 
   # View the documentation for the provider you're using for more
   # information on available options.
@@ -83,7 +83,7 @@ Vagrant.configure("2") do |config|
       'name' => "#{ENV['PUPPET_NODE']}",
       'version' => '',
       'OS' => 'Ubuntu 13.04',
-      'nodejs' => '0.11.9'
+      'wordpress' => '3.8'
     }
   end
 
@@ -95,13 +95,12 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with Puppet stand alone.  Puppet manifests
   # are contained in a directory path relative to this Vagrantfile.
   config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "manifests"
+    puppet.manifests_path = "puppet/manifests"
     puppet.manifest_file  = "default.pp"
-    puppet.module_path = ['modules']
+    puppet.module_path = ['puppet/modules']
     puppet.options = [
-#       "--hiera_config=/etc/puppet/hiera.yaml",
+      "--hiera_config=/vagrant/puppet/hiera.yaml",
        "--verbose --debug", "--environment=#{ENV['PUPPET_ENV']}",
-#        "--fileserverconfig=/vagrant/fileserver.conf"
        ]
   end
 

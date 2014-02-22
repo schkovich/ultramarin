@@ -14,6 +14,3 @@ sitemap.xml
 wp-content/cache/
 wp-content/backups/
 sitemap.xml.gz
-.librarian
-.tmp/
-modules/
