@@ -1,0 +1,47 @@
+php::cli::ensure: &PHP_ENSURE installed
+php::cli::package: php5-cli
+php::cli::provider: &PHP_PROVIDER apt
+php::cli::inifile: /etc/php5/cli/php.ini
+php::cli::settings:
+  set:
+    PHP/short_open_tag: &PHP_SHORT_OPEN_TAG Off
+    PHP/post_max_size: &PHP_POST_MAX_SIZE 500M
+    PHP/upload_max_filesize: &PHP_MAX_FILESIZE 500M
+    PHP/display_errors: &PHP_DISPLAY_ERRORS On
+    PHP/display_startup_errors: &PHP_DISPLAY_STARTUP_ERRORS On
+    PHP/error_reporting: &PHP_ERROR_REPORTING E_ALL
+    PHP/log_errors: &PHP_LOG_ERRORS On
+    PHP/track_errors: &PHP_TRACK_ERRORS Off
+    PHP/error_log: &PHP_ERROR_LOG syslog
+    PHP/error_prepend_string: "[cli]"
+    PHP/allow_url_fopen: On
+    Date/date.timezone: &PHP_DATE_TIMEZONE UTC
+    mbstring/mbstring.internal_encoding: &PHP_INT_ENCODING UTF-8
+
+php::fpm::daemon::ensure: *PHP_ENSURE
+php::fpm::daemon::log_level: debug
+
+web_server::php::fpm::pool::settings:
+  set:
+    PHP/short_open_tag: *PHP_SHORT_OPEN_TAG
+    PHP/post_max_size: *PHP_POST_MAX_SIZE
+    PHP/upload_max_filesize: *PHP_MAX_FILESIZE
+    PHP/display_errors: *PHP_DISPLAY_ERRORS
+    PHP/display_startup_errors: *PHP_DISPLAY_STARTUP_ERRORS
+    PHP/error_reporting: *PHP_ERROR_REPORTING
+    PHP/log_errors: *PHP_LOG_ERRORS
+    PHP/track_errors: *PHP_TRACK_ERRORS
+    PHP/error_log: *PHP_ERROR_LOG
+    PHP/error_prepend_string: "[fpm]"
+    PHP/allow_url_fopen: Off
+    Date/date.timezone: *PHP_DATE_TIMEZONE
+    mbstring/mbstring.internal_encoding: *PHP_INT_ENCODING
+    mysqlnd/mysqlnd.collect_memory_statistics: On
+    Session/session.gc_probability: 1
+    Session/session.gc_maxlifetime: 14400
+
+php::extension::xdebug::ensure: 'latest'
+
+web_server::vhosts::test::host: 'dev'
+
+web_server::host: dev.ultramarin.wp

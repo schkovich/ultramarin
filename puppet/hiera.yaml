@@ -1,0 +1,8 @@
+:backends: yaml
+:yaml:
+  :datadir: /vagrant/puppet/files/hieradata
+:hierarchy:
+  - "%{::clientcert}"
+  - "%{::environment}"
+  - common
+:logger: console

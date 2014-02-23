@@ -16,17 +16,17 @@ Vagrant.configure("2") do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-#   config.vm.network :forwarded_port, guest: 5858, host: 8585
+  # config.vm.network :forwarded_port, guest: 5858, host: 8585
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   config.vm.network :private_network, ip: "192.168.10.2"
-#   config.vm.network :hostonly, ip: "192.168.10.2"
-#   config.vm.network "public_network", :bridge => 'en1: Wi-Fi (AirPort)'
+  # config.vm.network :hostonly, ip: "192.168.10.2"
+  # config.vm.network "public_network", :bridge => 'en1: Wi-Fi (AirPort)'
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-#   config.vm.network "public_network", :bridge => 'en1: 802.11 WiFi (wlan0)'
+  # config.vm.network "public_network", :bridge => 'en1: 802.11 WiFi (wlan0)'
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
@@ -34,13 +34,13 @@ Vagrant.configure("2") do |config|
   # argument is a set of non-required options.
   # NFS shares (Ubuntu) are not working well on encrypted file systems
   # https://help.ubuntu.com/community/SettingUpNFSHowTo#Mounting_NFS_shares_in_encrypted_home_won.27t_work_on_boot
-  config.vm.synced_folder "~/Projects/tcpproxy/", "/project", :nfs => true
+  config.vm.synced_folder "~/Projects/ultramarin/", "/project", :nfs => true
 
   # View the documentation for the provider you're using for more
   # information on available options.
 
   # setup FQDN
-  config.vm.hostname = "#{ENV['PUPPET_HOST']}.ultramarin.im"
+  config.vm.hostname = "#{ENV['PUPPET_HOST']}.ultramarin.wp"
 
   # config.ssh.username = "ubuntu"
   # Provider-specific configuration so you can fine-tune various
@@ -83,13 +83,14 @@ Vagrant.configure("2") do |config|
       'name' => "#{ENV['PUPPET_NODE']}",
       'version' => '',
       'OS' => 'Ubuntu 13.04',
+      'PHP' => '5.4',
       'wordpress' => '3.8'
     }
   end
 
   # Configure language
   config.vm.provision :shell do |s|
-    s.path = "langconfig.sh"
+    s.path = "puppet/langconfig.sh"
   end
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests

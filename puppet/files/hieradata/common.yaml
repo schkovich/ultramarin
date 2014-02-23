@@ -1,0 +1,76 @@
+web_server::nginx::client_max_body_size: "50M"
+
+web_server::php::fpm::pool::settings:
+  set:
+    PHP/short_open_tag: Off
+    PHP/post_max_size: 125M
+    PHP/upload_max_filesize: 125M
+    PHP/display_errors: Off
+    PHP/display_startup_errors: Off
+    PHP/error_reporting: E_ALL & ~E_DEPRECATED & ~E_STRICT
+    PHP/log_errors: On
+    PHP/track_errors: Off
+    PHP/error_log: &PHP_ERROR_LOG syslog
+    PHP/error_prepend_string: "[fpm]"
+    PHP/allow_url_fopen: Off
+    PHP/memory_limit: 128MB
+    PHP/expose_php: Off
+    Date/date.timezone: &PHP_DATE_TIMEZONE UTC
+    mbstring/mbstring.internal_encoding: UTF-8
+    Session/session.name: 'test'
+    Session/session.use_only_cookies: 1
+    Session/session.cookie_secure: 1
+    Session/session.cookie_httponly: 1
+    Session/session.gc_probability: 1
+    Session/session.entropy_length: 16
+    Session/session.entropy_file: '/dev/urandom'
+
+php::phpunit::ensure: 'latest'
+
+php::extension::xdebug::package: 'xdebug'
+php::extension::xdebug::provider: 'pecl'
+php::extension::xdebug::inifile: '/etc/php5/mods-available/xdebug.ini'
+php::extension::xdebug::settings:
+  set:
+    '.anon/zend_extension': '/usr/lib/php5/20100525/xdebug.so'
+    '.anon/xdebug.max_nesting_level': 1000
+
+web_server::git::version: 'latest'
+web_server::git::ensure: 'present'
+web_server::git::membership: 'minimum'
+web_server::git::shell: &SHELL '/bin/bash'
+web_server::git::managehome: true
+
+web_server::php::fpm::pool::pool_name: &FPM_POOL_NAME 'phpfpm'
+web_server::php::fpm::pool::listen: '127.0.0.1:9000'
+web_server::php::fpm::pool::error_log: syslog
+web_server::php::fpm::pool::inifile: /etc/php5/fpm/php.ini
+
+web_server::nginx::pool_name: *FPM_POOL_NAME
+web_server::nginx::pool:
+  - '127.0.0.1:9000'
+web_server::nginx::mime_types:
+  application/x-font-ttf: ttf
+  application/font-woff: woff
+  application/font-otf: otf
+
+web_server::vhosts::test::domain: 'ultramarin.wp'
+web_server::vhosts::test::www_root: '/home/vagrant/opt/ultramarin/www'
+web_server::vhosts::test::index_files:
+    - 'index.php'
+web_server::vhosts::test::listen_port: 8080
+web_server::vhosts::test::ssl: false
+web_server::vhosts::test::try_files:
+  - '$uri $uri/ /index.php?$uri&$args'
+web_server::vhosts::test::location_fpm:
+    ssl: false
+    ssl_only: false
+    location: '~ \.(php|phtml)$'
+    fastcgi_script: '$document_root$fastcgi_script_name'
+    fastcgi_split_path: '^(.+\.php)(/.+)$'
+    fastcgi: *FPM_POOL_NAME
+    location_cfg_append:
+      fastcgi_index: 'index.php'
+web_server::vhosts::test::location_ht:
+    location: '~ /\.ht'
+    deny: 'all'
