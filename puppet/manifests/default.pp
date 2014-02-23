@@ -2,9 +2,9 @@ node 'dev.ultramarin.wp' {
 
   class {"web_server":}
   ->
-  file {"/home/vagrant/opt/ultramarin":
+  file {"/home/vagrant/opt/wordpress":
     ensure => link,
-    target => "/project",
+    target => "/ultramarin",
   }
   ->
   web_server::php {"php-${environment}": }
@@ -24,7 +24,13 @@ node 'dev.ultramarin.wp' {
   class { 'wordpress':
     wp_owner    => 'www-data',
     wp_group    => 'www-data',
+    install_dir => '/home/vagrant/opt/wordpress',
     db_user     => 'wordpress',
     db_password => 'x248agent',
+  }
+  ->
+  file {"/home/vagrant/opt/wordpress/wp-content/themes/ultramarin":
+    ensure => link,
+    target => "/ultramarin",
   }
 }

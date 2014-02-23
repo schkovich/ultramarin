@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
   # argument is a set of non-required options.
   # NFS shares (Ubuntu) are not working well on encrypted file systems
   # https://help.ubuntu.com/community/SettingUpNFSHowTo#Mounting_NFS_shares_in_encrypted_home_won.27t_work_on_boot
-  config.vm.synced_folder "~/Projects/ultramarin/", "/project", :nfs => true
+  config.vm.synced_folder "~/Projects/ultramarin/theme", "/ultramarin", :nfs => true
 
   # View the documentation for the provider you're using for more
   # information on available options.

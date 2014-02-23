@@ -55,13 +55,13 @@ web_server::nginx::mime_types:
   application/font-otf: otf
 
 web_server::vhosts::test::domain: 'ultramarin.wp'
-web_server::vhosts::test::www_root: '/home/vagrant/opt/ultramarin/www'
+web_server::vhosts::test::www_root: '/home/vagrant/opt/wordpress'
 web_server::vhosts::test::index_files:
     - 'index.php'
-web_server::vhosts::test::listen_port: 8080
+web_server::vhosts::test::listen_port: 80
 web_server::vhosts::test::ssl: false
 web_server::vhosts::test::try_files:
-  - '$uri $uri/ /index.php?$uri&$args'
+  - '$uri $uri/ /index.php?$args'
 web_server::vhosts::test::location_fpm:
     ssl: false
     ssl_only: false
