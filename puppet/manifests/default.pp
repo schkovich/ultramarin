@@ -2,11 +2,6 @@ node 'dev.ultramarin.wp' {
 
   class {"web_server":}
   ->
-  file {"/home/vagrant/opt/wordpress":
-    ensure => link,
-    target => "/ultramarin",
-  }
-  ->
   web_server::php {"php-${environment}": }
   ->
   class { 'web_server::vhosts::test':
@@ -22,8 +17,8 @@ node 'dev.ultramarin.wp' {
   }
   ->
   class { 'wordpress':
-    wp_owner    => 'www-data',
-    wp_group    => 'www-data',
+    wp_owner    => 'vagrant',
+    wp_group    => 'vagrant',
     install_dir => '/home/vagrant/opt/wordpress',
     db_user     => 'wordpress',
     db_password => 'x248agent',
