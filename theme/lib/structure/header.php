@@ -894,7 +894,7 @@ add_action( 'genesis_site_title', 'genesis_seo_site_title' );
 function genesis_seo_site_title() {
 
 	//* Set what goes inside the wrapping tags
-	$inside = sprintf( '<a href="%s" title="%s">%s</a>', trailingslashit( home_url() ), esc_attr( get_bloginfo( 'name' ) ), html_entity_decode(get_bloginfo( 'name' )) );
+	$inside = sprintf( '<a href="%s" title="%s">%s</a>', trailingslashit( home_url() ), esc_attr( strip_tags(html_entity_decode(get_bloginfo( 'name' ))) ), html_entity_decode(get_bloginfo( 'name' )) );
 
 	//* Determine which wrapping tags to use
 	$wrap = is_home() && 'title' === genesis_get_seo_option( 'home_h1_on' ) ? 'h1' : 'p';
