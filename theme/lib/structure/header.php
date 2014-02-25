@@ -113,7 +113,7 @@ function genesis_default_title( $title, $sep, $seplocation ) {
 	global $wp_query;
 
 	if ( is_feed() )
-		return trim( $title );
+		return trim( strip_tags(html_entity_decode($title)) );
 
 	$sep = genesis_get_seo_option( 'doctitle_sep' ) ? genesis_get_seo_option( 'doctitle_sep' ) : '–';
 	$seplocation = genesis_get_seo_option( 'doctitle_seplocation' ) ? genesis_get_seo_option( 'doctitle_seplocation' ) : 'right';
@@ -121,7 +121,7 @@ function genesis_default_title( $title, $sep, $seplocation ) {
 	//* If viewing the home page
 	if ( is_front_page() ) {
 		//* Determine the doctitle
-		$title = genesis_get_seo_option( 'home_doctitle' ) ? genesis_get_seo_option( 'home_doctitle' ) : get_bloginfo( 'name' );
+		$title = genesis_get_seo_option( 'home_doctitle' ) ? genesis_get_seo_option( 'home_doctitle' ) : mygenesis_get_title();
 
 		//* Append site description, if necessary
 		$title = genesis_get_seo_option( 'append_description_home' ) ? $title . " $sep " . get_bloginfo( 'description' ) : $title;
@@ -180,8 +180,8 @@ function genesis_default_title( $title, $sep, $seplocation ) {
 		return esc_html( trim( $title ) );
 
 	//* Else append the site name
-	$title = 'right' === $seplocation ? $title . " $sep " . get_bloginfo( 'name' ) : get_bloginfo( 'name' ) . " $sep " . $title;
-	return esc_html( trim( $title ) );
+	$title = 'right' === $seplocation ? $title . " $sep " . mygenesis_get_title() : mygenesis_get_title() . " $sep " . $title;
+	return strip_tags(html_entity_decode(esc_html( trim( $title ) )));
 
 }
 
@@ -894,7 +894,7 @@ add_action( 'genesis_site_title', 'genesis_seo_site_title' );
 function genesis_seo_site_title() {
 
 	//* Set what goes inside the wrapping tags
-	$inside = sprintf( '<a href="%s" title="%s">%s</a>', trailingslashit( home_url() ), esc_attr( strip_tags(html_entity_decode(get_bloginfo( 'name' ))) ), html_entity_decode(get_bloginfo( 'name' )) );
+	$inside = sprintf( '<a href="%s" title="%s">%s</a>', trailingslashit( home_url() ), esc_attr( mygenesis_get_title() ), mygenesis_get_title_html() );
 
 	//* Determine which wrapping tags to use
 	$wrap = is_home() && 'title' === genesis_get_seo_option( 'home_h1_on' ) ? 'h1' : 'p';
@@ -989,4 +989,22 @@ function genesis_header_menu_wrap( $menu ) {
 
 	return sprintf( '<nav %s>', genesis_attr( 'nav-header' ) ) . $menu . '</nav>';
 
+}
+
+/**
+ * Strip HTML and PHP tags from WP blog title
+ * @return string
+ */
+function mygenesis_get_title() {
+
+    return strip_tags(mygenesis_get_title_html());
+}
+
+/**
+ * Convert all HTML entities in WP blog title to their applicable characters
+ * @return string
+ */
+function mygenesis_get_title_html() {
+
+    return html_entity_decode(get_bloginfo( 'name' ));
 }
