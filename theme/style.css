@@ -844,8 +844,9 @@ Site Header
 	float: left;
 	font-family: Lato, sans-serif;
 	font-weight: 700;
-	padding: 8px 0;
-	padding: 0.8rem 0;
+	padding: 7px 0;
+	padding: 0.7rem 0;
+    margin-left: 2rem;
 	width: 320px;
 }
 
@@ -854,8 +855,8 @@ Site Header
 }
 
 .site-title {
-	font-size: 70px;
-	font-size: 7rem;
+	font-size: 65px;
+	font-size: 6.5rem;
 	line-height: 1;
 	margin: 0px;
 	margin: 0rem;
@@ -930,7 +931,8 @@ Site Navigation
 	clear: both;
 	color: #999;
 	font-family: Lato, sans-serif;
-	line-height: 1.5;
+    font-size: 1.2rem;
+	line-height: 1.8rem;
 	width: 100%;
 }
 
@@ -943,8 +945,8 @@ Site Navigation
 	border: none;
 	color: #999;
 	display: block;
-	padding: 28px 24px;
-	padding: 2.8rem 2.4rem;
+	padding: 8px 24px;
+	padding: 0.8rem 2.4rem;
 	position: relative;
 }
 
@@ -1599,8 +1601,14 @@ h1.site-title a {
     color: #333333;
     font-weight: normal;
     letter-spacing: -5px;
+    letter-spacing: -0.5rem;
 }
 
 span.um-title {
     font-weight: bold;
+}
+
+li.menu-item-home a {
+    background-color: #fefefe;
+    color: #333333 !important;
 }
