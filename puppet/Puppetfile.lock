@@ -19,6 +19,7 @@ FORGE
     puppetlabs/mysql (2.2.1)
       puppetlabs/stdlib (>= 3.2.0)
     puppetlabs/stdlib (4.1.0)
+    thias/vsftpd (0.2.1)
 
 GIT
   remote: github.com:schkovich/webserver.git
@@ -32,5 +33,6 @@ GIT
 DEPENDENCIES
   hunner/wordpress (>= 0)
   puppetlabs/mysql (>= 0)
+  thias/vsftpd (>= 0)
   web_server (>= 0)
 

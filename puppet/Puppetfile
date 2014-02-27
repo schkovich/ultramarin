@@ -6,3 +6,5 @@ mod 'web_server',
 mod 'puppetlabs/mysql'
 
 mod 'hunner/wordpress'
+
+mod 'thias/vsftpd'
