@@ -1077,12 +1077,12 @@ Content Area
 --------------------------------------------- */
 
 .entry {
-	background-color: #fff;
+	background-color: #666666;
 	border-radius: 3px;
 	margin-bottom: 40px;
 	margin-bottom: 4rem;
-	padding: 40px 40px 24px;
-	padding: 4rem 4rem 2.4rem;
+	padding: 0px 40px 24px;
+	padding: 0rem 4rem 2.4rem;
 }
 
 .entry-content a {
@@ -1297,10 +1297,6 @@ Sidebars
 	color: #999;
 }
 
-.sidebar a {
-	border-bottom: 1px solid #ddd;
-}
-
 .sidebar p:last-child {
 	margin-bottom: 0;
 }
@@ -1317,7 +1313,7 @@ Sidebars
 }
 
 .sidebar .widget {
-	background-color: #fff;
+	background-color: #666666;
 	border-radius: 3px;
 	margin-bottom: 40px;
 	margin-bottom: 4rem;
@@ -1611,4 +1607,25 @@ span.um-title {
 li.menu-item-home a {
     background-color: #fefefe;
     color: #333333 !important;
+}
+
+.widget li.menu-item-home a {
+    background-color: #666666;
+    color: #333333 !important;
+}
+
+li.menu-item-type-custom {
+    text-align: right;
+}
+
+header.entry-header {
+    display: none;
+}
+
+footer.entry-footer {
+    display: none;
+}
+
+p.entry-permalink {
+    display: none;
 }
