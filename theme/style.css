@@ -417,14 +417,14 @@ Structure and Layout
 
 .site-inner,
 .wrap {
-	margin: 0 auto;
 	max-width: 1140px;
+    margin: 0 auto;
 }
 
 .site-inner {
 	clear: both;
-	padding-top: 40px;
-	padding-top: 4rem;
+	padding-top: 10px;
+	padding-top: 1rem;
 }
 
 /* Column Widths and Positions
@@ -451,7 +451,7 @@ Structure and Layout
 
 .content {
 	float: right;
-	width: 740px;
+	width: 966px;
 }
 
 .content-sidebar .content,
@@ -473,8 +473,7 @@ Structure and Layout
 /* Primary Sidebar */
 
 .sidebar-primary {
-	float: right;
-	width: 360px;
+	width: 174px;
 }
 
 .sidebar-content .sidebar-primary,
@@ -846,7 +845,8 @@ Site Header
 	font-weight: 700;
 	padding: 7px 0;
 	padding: 0.7rem 0;
-    margin-left: 2rem;
+    margin-left: 194px;
+    margin-left: 19.4rem;
 	width: 320px;
 }
 
@@ -1081,8 +1081,8 @@ Content Area
 	border-radius: 3px;
 	margin-bottom: 40px;
 	margin-bottom: 4rem;
-	padding: 0px 40px 24px;
-	padding: 0rem 4rem 2.4rem;
+	padding: 0px 5px 24px;
+	padding: 0rem 0.5rem 2.4rem;
 }
 
 .entry-content a {
@@ -1319,6 +1319,11 @@ Sidebars
 	margin-bottom: 4rem;
 	padding: 40px;
 	padding: 4rem;
+}
+
+.sidebar .widget_nav_menu {
+    padding: 0px;
+    padding: 0rem;
 }
 
 .sidebar .enews-widget {
@@ -1628,4 +1633,8 @@ footer.entry-footer {
 
 p.entry-permalink {
     display: none;
+}
+
+.wrap ul.menu-primary {
+    margin-left: 174px;
 }
