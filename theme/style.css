@@ -473,6 +473,7 @@ Structure and Layout
 /* Primary Sidebar */
 
 .sidebar-primary {
+	float: right;
 	width: 174px;
 }
 
@@ -847,7 +848,7 @@ Site Header
 	padding: 0.7rem 0;
     margin-left: 194px;
     margin-left: 19.4rem;
-	width: 320px;
+	width: 320px !important;
 }
 
 .header-image .title-area {
@@ -933,7 +934,6 @@ Site Navigation
 	font-family: Lato, sans-serif;
     font-size: 1.2rem;
 	line-height: 1.8rem;
-	width: 100%;
 }
 
 .genesis-nav-menu .menu-item {
@@ -1081,8 +1081,8 @@ Content Area
 	border-radius: 3px;
 	margin-bottom: 40px;
 	margin-bottom: 4rem;
-	padding: 0px 5px 24px;
-	padding: 0rem 0.5rem 2.4rem;
+	padding: 0px 40px 24px;
+	padding: 0rem 4rem 2.4rem;
 }
 
 .entry-content a {
